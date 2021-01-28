@@ -20,6 +20,16 @@ export const LOGIN_EMAIL = gql`
   }
 `;
 
+// Logout
+export const LOGOUT = gql`
+  mutation Logout {
+    Logout {
+      ok
+      error
+    }
+  }
+`;
+
 // Check Me
 export const CHECK_ME = gql`
   query CheckMe {

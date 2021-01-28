@@ -54,16 +54,31 @@ function LoginPage() {
   };
 
   return (
-    <div>
+    <>
       <div>
-        <input type="text" name="email" value={email} onChange={onChange} />
-      </div>
-      <div>
-        <input type="password" name="password" value={password} onChange={onChange} />
+        <h2>Email Login</h2>
+        <div>
+          <input type="text" name="email" value={email} onChange={onChange} />
+        </div>
+        <div>
+          <input type="password" name="password" value={password} onChange={onChange} />
+        </div>
+
+        <button onClick={onSubmit}>Login</button>
       </div>
 
-      <button onClick={onSubmit}>Login</button>
-    </div>
+      <div>
+        <a
+          href={`https://github.com/login/oauth/authorize?client_id=3260375f9e6dd0827621&scope=user`}
+        >
+          Github Login
+        </a>
+      </div>
+
+      <div>
+        <a href="http://localhost:4000/social/google/login">Google Login</a>
+      </div>
+    </>
   );
 }
 
