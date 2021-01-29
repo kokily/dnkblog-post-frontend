@@ -148,7 +148,7 @@ const Spacer = styled.div`
 const WriteButton = styled.button`
   height: 2rem;
   margin-right: 1rem;
-  padding: 7px 1rem 5px 1rem;
+  padding: 6px 1rem 5px 1rem;
   border-radius: 0.6rem;
   font-size: 1rem;
   border: 1px solid white;

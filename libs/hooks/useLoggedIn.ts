@@ -6,10 +6,10 @@ import { MeType } from '../types';
 
 function useLoggedIn() {
   const router = useRouter();
-  const { data, loading } = useQuery<{ CheckMe: { me: MeType | null } }>(CHECK_ME);
+  const { data, loading } = useQuery<{ CheckMe: { user: MeType | null } }>(CHECK_ME);
 
   useEffect(() => {
-    if (!loading && data?.CheckMe.me) {
+    if (!loading && data?.CheckMe.user) {
       router.replace('/');
     }
   }, [loading, data, router]);

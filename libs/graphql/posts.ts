@@ -97,7 +97,7 @@ export const ADD_POST = gql`
     $title: String!
     $body: String!
     $thumbnail: String!
-    $tags: [String]
+    $tags: [String]!
   ) {
     AddPost(
       category: $category
