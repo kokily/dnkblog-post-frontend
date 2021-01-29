@@ -28,3 +28,15 @@ export interface PostType {
 export interface CategoryType {
   name: string;
 }
+
+export interface AuthProps {
+  email: string;
+  username?: string;
+  password: string;
+  passwordConfirm?: string;
+}
+
+export interface AuthAction {
+  name: string;
+  value: string;
+}

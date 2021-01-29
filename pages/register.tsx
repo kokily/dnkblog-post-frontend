@@ -1,16 +1,16 @@
 import React from 'react';
 import AuthTemplate from '../components/auth/AuthTemplate';
-import LoginContainer from '../containers/auth/LoginContainer';
+import RegisterContainer from '../containers/auth/RegisterContainer';
 import useLoggedIn from '../libs/hooks/useLoggedIn';
 
-function LoginPage() {
+function RegisterPage() {
   useLoggedIn();
 
   return (
-    <AuthTemplate mode="login">
-      <LoginContainer />
+    <AuthTemplate mode="register">
+      <RegisterContainer />
     </AuthTemplate>
   );
 }
 
-export default LoginPage;
+export default RegisterPage;
