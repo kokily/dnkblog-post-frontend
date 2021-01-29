@@ -2,9 +2,10 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import { useMutation, useQuery } from '@apollo/client';
 import { CHECK_ME, LOGOUT } from '../../libs/graphql/auth';
-import { MeType } from '../../libs/types';
+import { MeType, TagType } from '../../libs/types';
 import { devClient, isProd, prodClient } from '../../libs/constants';
 import PageTemplate from '../../components/common/PageTemplate';
+import { TAG_POSTS } from '../../libs/graphql/posts';
 
 function PageContainer({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -12,6 +13,9 @@ function PageContainer({ children }: { children: React.ReactNode }) {
   const { data, loading } = useQuery<{ CheckMe: { user: MeType | null } }>(CHECK_ME, {
     fetchPolicy: 'network-only',
   });
+  const { data: tagData, loading: tagLoading } = useQuery<{
+    TopTag: { tags: TagType[] | null; all_count: number };
+  }>(TAG_POSTS);
   const isTag = router.pathname === '/';
 
   const onLogout = async () => {
@@ -19,7 +23,7 @@ function PageContainer({ children }: { children: React.ReactNode }) {
 
     await Logout();
     await client.clearStore();
-    await router.replace(url);
+    window.location.href = url;
   };
 
   const onWrite = () => {
@@ -31,12 +35,13 @@ function PageContainer({ children }: { children: React.ReactNode }) {
   };
 
   if (loading) return null;
+  if (tagLoading) return null;
 
   return (
     <PageTemplate
       me={data?.CheckMe.user || null}
-      tags={[]}
-      all_count={1}
+      tags={tagData?.TopTag.tags || []}
+      all_count={tagData?.TopTag.all_count || 0}
       onLogout={onLogout}
       onWrite={onWrite}
       onTag={onTag}

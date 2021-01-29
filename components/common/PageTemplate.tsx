@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { MeType, TagType } from '../../libs/types';
 import { media } from '../../style/media';
+import TopTag from '../posts/TopTag';
 import Header from './Header';
 
 interface PageTemplateProps {
@@ -32,7 +33,11 @@ function PageTemplate({
 
         <Main>{children}</Main>
 
-        {isTag && <div>Tag</div>}
+        {isTag && (
+          <Tag>
+            <TopTag tags={tags} all_count={all_count} onTag={onTag} />
+          </Tag>
+        )}
       </Layout>
     </PageBox>
   );
