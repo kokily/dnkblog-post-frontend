@@ -7,6 +7,7 @@ import { CHECK_ME } from '../../libs/graphql/auth';
 import { MeType, PostType } from '../../libs/types';
 import { toast } from 'react-toastify';
 import ReadPostButton from '../../components/post/ReadPostButton';
+import CommentContainer from '../comment/CommentContainer';
 
 interface ReadPostProps {
   post: PostType;
@@ -53,6 +54,7 @@ function ReadPostContainer({ post }: ReadPostProps) {
         onEdit={onEdit}
         onRemove={onRemove}
       />
+      <CommentContainer postId={post.id} user={data?.CheckMe.user || null} />
     </>
   );
 }

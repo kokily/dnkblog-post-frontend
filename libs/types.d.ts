@@ -40,3 +40,29 @@ export interface AuthAction {
   name: string;
   value: string;
 }
+
+export interface CommentType {
+  id: string;
+  body: string;
+  deleted: boolean;
+  userId: string;
+  username: string;
+  profile: string;
+  postId: string;
+  replies: ReplyType[];
+  created_at: string;
+  updated_at?: string;
+}
+
+export interface ReplyType {
+  id: string;
+  body: string;
+  deleted: boolean;
+  userId: string;
+  username: string;
+  profile: string;
+  postId: string;
+  commentId: string;
+  created_at: string;
+  updated_at?: string;
+}

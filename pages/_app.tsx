@@ -3,8 +3,8 @@ import { ApolloProvider } from '@apollo/client';
 import Head from 'next/head';
 import { ToastContainer } from 'react-toastify';
 import { useApollo } from '../libs/apollo/client';
-import GlobalStyle from '../style';
 import 'react-toastify/dist/ReactToastify.css';
+import GlobalStyle from '../style';
 
 function App({ Component, pageProps }: AppProps) {
   const apolloClient = useApollo(pageProps);
@@ -34,7 +34,7 @@ function App({ Component, pageProps }: AppProps) {
       <ApolloProvider client={apolloClient}>
         <Component {...pageProps} />
       </ApolloProvider>
-      <ToastContainer position="right-bottom" draggable="false" />
+      <ToastContainer position="right-bottom" draggable={false} />
     </>
   );
 }

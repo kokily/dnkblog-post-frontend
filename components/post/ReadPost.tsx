@@ -61,6 +61,8 @@ const PostBox = styled.div`
   justify-content: center;
   width: 100%;
   max-width: 950px;
+  border-bottom: 0.5rem outset ${oc.teal[4]};
+  margin-bottom: 2.5rem;
 `;
 
 const CategoryLink = styled.a`
