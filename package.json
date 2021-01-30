@@ -5,11 +5,12 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "NODE_ENV=production node server.js"
   },
   "dependencies": {
     "@apollo/client": "^3.3.7",
     "@apollo/react-hooks": "^4.0.0",
+    "@koa/router": "^10.0.0",
     "codemirror": "^5.59.2",
     "cookie": "^0.4.1",
     "date-fns": "^2.16.1",
@@ -17,6 +18,7 @@
     "graphql": "^15.5.0",
     "isomorphic-unfetch": "^3.1.0",
     "js-cookie": "^2.2.1",
+    "koa": "^2.13.1",
     "marked": "^1.2.8",
     "next": "10.0.5",
     "open-color": "^1.8.0",
