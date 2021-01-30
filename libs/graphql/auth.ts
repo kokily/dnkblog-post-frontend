@@ -48,3 +48,13 @@ export const CHECK_ME = gql`
     }
   }
 `;
+
+// Update Profile
+export const UPDATE_PROFILE = gql`
+  mutation UpdateProfile($profile: String, $email: String) {
+    UpdateProfile(profile: $profile, email: $email) {
+      ok
+      error
+    }
+  }
+`;

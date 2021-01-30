@@ -66,3 +66,13 @@ export interface ReplyType {
   created_at: string;
   updated_at?: string;
 }
+
+export interface CountType {
+  comments_num: number;
+  replies_num: number;
+}
+
+export interface UserCommentType {
+  comments: CommentType[];
+  replies: ReplyType[];
+}
