@@ -8,6 +8,7 @@ import { ADD_POST, UPDATE_POST } from '../../libs/graphql/posts';
 import WriteHeader from '../../components/write/WriteHeader';
 
 export interface WriteHeaderProps {
+  postId: string;
   category: string;
   title: string;
   thumbnail: string;
@@ -15,11 +16,12 @@ export interface WriteHeaderProps {
   tags: string[];
   setThumbnail: React.Dispatch<React.SetStateAction<string>>;
   setBody: React.Dispatch<React.SetStateAction<string>>;
-  update: boolean;
+  edit: boolean;
   post: PostType | null;
 }
 
 function WriteHeaderContainer({
+  postId,
   category,
   title,
   thumbnail,
@@ -27,7 +29,7 @@ function WriteHeaderContainer({
   tags,
   setThumbnail,
   setBody,
-  update,
+  edit,
   post,
 }: WriteHeaderProps) {
   const client = useApolloClient();
@@ -109,7 +111,7 @@ function WriteHeaderContainer({
     }
 
     try {
-      if (!update) {
+      if (!edit) {
         const response = await AddPost({
           variables: {
             category,
@@ -129,7 +131,7 @@ function WriteHeaderContainer({
       } else {
         const response = await UpdatePost({
           variables: {
-            id: post.id,
+            id: postId,
             category,
             title,
             body,
@@ -143,7 +145,7 @@ function WriteHeaderContainer({
         toast.success('포스트 저장 완료!');
 
         await client.clearStore();
-        router.push(`/post/${post.id}`);
+        router.replace(`/post/${postId}`);
       }
     } catch (err) {
       toast.error(err);

@@ -69,16 +69,17 @@ const WriteBox = styled.div`
       overflow: auto;
     }
     .divide {
+      width: 1rem;
       height: 100%;
       position: absolute;
-      transform: translate(-50%);
-      color: col-resize;
+      transform: translate(calc(50vw - 0.5rem));
+      cursor: col-resize;
     }
     @media (max-width: 800px) {
       .content {
         flex: 1 !important;
       }
-      .content,
+      .divide,
       .preview {
         display: none;
       }

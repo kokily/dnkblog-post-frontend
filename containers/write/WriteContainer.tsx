@@ -1,10 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import WriteTemplate from '../../components/write/WriteTemplate';
 import WriteBodyContainer from './WriteBodyContainer';
 import WriteHeaderContainer from './WriteHeaderContainer';
 import WritePreviewContainer from './WritePreviewContainer';
+import { useQuery } from '@apollo/client';
+import { READ_POST } from '../../libs/graphql/posts';
+import { PostType } from '../../libs/types';
 
-function WriteContainer() {
+interface WriteContainerProps {
+  edit?: boolean;
+}
+
+function WriteContainer({ edit }: WriteContainerProps) {
+  const router = useRouter();
+  const { id }: { id?: string } = router.query;
+  const { data, loading, refetch } = useQuery<{
+    ReadPost: { post: PostType | null };
+  }>(READ_POST, {
+    variables: { id },
+  });
   const [category, setCategory] = useState('');
   const [title, setTitle] = useState('');
   const [thumbnail, setThumbnail] = useState('');
@@ -30,10 +45,23 @@ function WriteContainer() {
     window.addEventListener('mouseup', onMouseUp);
   };
 
+  useEffect(() => {
+    if (data?.ReadPost.post) {
+      setCategory(data.ReadPost.post.category);
+      setTitle(data.ReadPost.post.title);
+      setBody(data.ReadPost.post.body);
+      setThumbnail(data.ReadPost.post.thumbnail);
+      setTags(data.ReadPost.post.tags);
+    }
+  }, [edit, data]);
+
+  if (loading) return null;
+
   return (
     <WriteTemplate
       header={
         <WriteHeaderContainer
+          postId={id}
           category={category}
           title={title}
           thumbnail={thumbnail}
@@ -41,7 +69,7 @@ function WriteContainer() {
           body={body}
           setThumbnail={setThumbnail}
           setBody={setBody}
-          update={false}
+          edit={edit}
           post={null}
         />
       }
