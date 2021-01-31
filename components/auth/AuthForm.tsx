@@ -3,6 +3,7 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import oc from 'open-color';
 import shadow from '../../style/shadow';
+import { devServer, isProd, prodServer } from '../../libs/constants';
 
 interface AuthFormProps {
   mode: 'login' | 'register';
@@ -101,7 +102,7 @@ function AuthForm({
         >
           <img className="github" src="/GitHub-Mark-32px.png" alt="Github" />
         </a>
-        <a href="http://localhost:4000/social/google/login">
+        <a href={`${isProd ? prodServer : devServer}/social/google/login`}>
           <img className="google" src="/google1.png" alt="Google" />
         </a>
       </SocialLink>
