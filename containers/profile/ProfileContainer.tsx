@@ -14,8 +14,8 @@ function ProfileContainer() {
   const { data: count, loading: countLoading } = useQuery<{
     CountComments: { count: CountType | null };
   }>(COUNT_COMMENTS);
-  const [profile, setProfile] = useState(data?.CheckMe.user.profile);
-  const [email, setEmail] = useState(data?.CheckMe.user.email);
+  const [profile, setProfile] = useState('');
+  const [email, setEmail] = useState('');
   const [toggle, setToggle] = useState(false);
   const [UpdateProfile, { client }] = useMutation(UPDATE_PROFILE);
 
@@ -54,8 +54,6 @@ function ProfileContainer() {
   const onSubmit = async (e: React.MouseEvent) => {
     e.preventDefault();
 
-    console.log(profile, data?.CheckMe.user.profile, email, data?.CheckMe.user.email);
-
     if (profile === data?.CheckMe.user.profile && email === data?.CheckMe.user.email) {
       toast.error('수정 사항이 없습니다.');
       return;
@@ -85,7 +83,17 @@ function ProfileContainer() {
     }
   };
 
-  useEffect(() => {}, [profile]);
+  useEffect(() => {
+    if (data?.CheckMe.user) {
+      if (data.CheckMe.user.profile) {
+        setProfile(data.CheckMe.user.profile);
+      } else if (!data.CheckMe.user.profile && profile === '') {
+        setProfile('/background.jpg');
+      }
+
+      setEmail(data.CheckMe.user.email);
+    }
+  }, [data, profile]);
 
   if (loading) return null;
   if (countLoading) return null;

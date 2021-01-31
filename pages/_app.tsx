@@ -34,7 +34,7 @@ function App({ Component, pageProps }: AppProps) {
       <ApolloProvider client={apolloClient}>
         <Component {...pageProps} />
       </ApolloProvider>
-      <ToastContainer position="right-bottom" draggable={false} />
+      <ToastContainer position="bottom-right" draggable={false} />
     </>
   );
 }

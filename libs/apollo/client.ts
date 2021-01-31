@@ -40,7 +40,7 @@ const authLink = setContext((_request, { headers }) => {
 });
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
-  console.table({ graphQLErrors, networkError });
+  // console.table({ graphQLErrors, networkError });
 });
 
 function createApolloClient() {

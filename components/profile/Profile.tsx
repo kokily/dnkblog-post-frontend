@@ -31,26 +31,14 @@ function Profile({
   onSubmit,
   count,
 }: ProfileProps) {
-  let profileImage;
-
-  if (user?.profile === '' && profile === '') {
-    profileImage = '/background.jpg';
-  } else if (user?.profile !== '' && profile === '') {
-    profileImage = user.profile;
-  } else if (user?.profile === '' && profile !== '') {
-    profileImage = profile;
-  } else {
-    profileImage = user?.profile;
-  }
-
   return (
     <ProfileBox>
       {user && (
         <>
-          <UserProfile image={profileImage}>
-            {profile === '' && (
+          <UserProfile image={profile && profile}>
+            {user.profile === null && profile === '/background.jpg' && (
               <>
-                <h3>
+                <h3 className="image">
                   프로필: <Button onClick={onProfileUpload}>사진 등록</Button>
                 </h3>
               </>
@@ -90,7 +78,9 @@ function Profile({
             </UserInfo>
           </Link>
 
-          <SubmitButton onClick={onSubmit}>저장하기</SubmitButton>
+          {(!user.profile || !user.email) && (
+            <SubmitButton onClick={onSubmit}>저장하기</SubmitButton>
+          )}
         </>
       )}
     </ProfileBox>
@@ -112,15 +102,21 @@ const UserProfile = styled.div<UserProps>`
   justify-content: flex-end;
   align-items: center;
   margin-top: 3rem;
+  z-index: 3;
   width: 300px;
   height: 300px;
-  z-index: 3;
+
   h3 {
     margin: 0;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: ${oc.blue[4]};
   }
+
+  .image {
+    margin-bottom: 2rem;
+  }
+
   p {
     font-weight: 300;
     margin: 10px 0 15px;
@@ -131,6 +127,7 @@ const UserProfile = styled.div<UserProps>`
     border-radius: 4px;
     padding: 0.3rem;
   }
+
   ${(props) =>
     props.image &&
     css`
