@@ -105,6 +105,9 @@ function AuthForm({
         <a href={`${isProd ? prodServer : devServer}/social/google/login`}>
           <img className="google" src="/google1.png" alt="Google" />
         </a>
+        <a href={`${isProd ? prodServer : devServer}/social/kakao/login`}>
+          <img className="kakao" src="/kakao.png" alt="Kakao" />
+        </a>
       </SocialLink>
     </>
   );
@@ -224,6 +227,18 @@ const SocialLink = styled.div`
     }
   }
   .google {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    margin: 0;
+    margin-right: 1.5rem;
+    opacity: 50%;
+    transition: 0.2s all;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  .kakao {
     width: 34px;
     height: 34px;
     padding: 0;
