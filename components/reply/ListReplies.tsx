@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import oc from 'open-color';
-import { BiBody, BiArrowToTop, BiArrowFromTop } from 'react-icons/bi';
-import { RiDeleteBin5Fill } from 'react-icons/ri';
+import { BiArrowToTop, BiArrowFromTop } from 'react-icons/bi';
 import { MeType, ReplyType } from '../../libs/types';
-import formatDate from '../../libs/formatDate';
-import RemoveModal from '../common/RemoveModal';
-import MarkdownRenderContainer from '../../containers/common/MarkdownRenderContainer';
 import ReplyCardContainer from '../../containers/reply/ReplyCardConatiner';
 
 interface ListRepliesProps {

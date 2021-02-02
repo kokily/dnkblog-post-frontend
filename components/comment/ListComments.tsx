@@ -1,20 +1,7 @@
 import React, { useState } from 'react';
-import styled, { css } from 'styled-components';
-import oc from 'open-color';
-import { BiBody } from 'react-icons/bi';
-import { RiDeleteBin5Fill } from 'react-icons/ri';
-import { FaRegEdit } from 'react-icons/fa';
+import styled from 'styled-components';
 import { CommentType, MeType } from '../../libs/types';
-import formatDate from '../../libs/formatDate';
-import ReplyContainer from '../../containers/reply/ReplyContainer';
-import RemoveModal from '../common/RemoveModal';
-import MarkdownRenderContainer from '../../containers/common/MarkdownRenderContainer';
-import Comment from './Comment';
 import CommentCardContainer from '../../containers/comment/CommentCardContainer';
-
-interface RemoveProps {
-  deleted?: boolean;
-}
 
 interface ListCommentsProps {
   comments: CommentType[] | null;
