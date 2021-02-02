@@ -98,6 +98,7 @@ function ReplyContainer({
         replyToggle={replyToggle}
         onReplyToggle={onReplyToggle}
         onRemoveReply={onRemoveReply}
+        refetch={refetch}
       />
       {user && (
         <AddReply

@@ -65,3 +65,13 @@ export const REMOVE_COMMENT = gql`
     }
   }
 `;
+
+// Update Comment (Params: id, body)
+export const UPDATE_COMMENT = gql`
+  mutation UpdateComment($id: ID!, $body: String!) {
+    UpdateComment(id: $id, body: $body) {
+      ok
+      error
+    }
+  }
+`;

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import oc from 'open-color';
 import { MeType } from '../../libs/types';
 import { MdImageAspectRatio } from 'react-icons/md';
+import { CgArrowDownR } from 'react-icons/cg';
 
 interface AddCommentProps {
   body: string;

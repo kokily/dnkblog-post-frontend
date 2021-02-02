@@ -19,3 +19,13 @@ export const REMOVE_REPLY = gql`
     }
   }
 `;
+
+// Update Reply (Params: postId, commentId, body)
+export const UPDATE_REPLY = gql`
+  mutation UpdateReply($id: ID!, $body: String!) {
+    UpdateReply(id: $id, body: $body) {
+      ok
+      error
+    }
+  }
+`;

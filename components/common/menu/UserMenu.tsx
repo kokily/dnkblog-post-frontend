@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import oc from 'open-color';
-import { animated } from 'react-spring';
 import OutsideClickHandler from 'react-outside-click-handler';
+import { animated } from 'react-spring';
 import { CategoryType, MeType } from '../../../libs/types';
 import shadow from '../../../style/shadow';
 import UserMenuItem from './UserMenuItem';

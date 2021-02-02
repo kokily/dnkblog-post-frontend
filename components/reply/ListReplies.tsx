@@ -6,10 +6,8 @@ import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { MeType, ReplyType } from '../../libs/types';
 import formatDate from '../../libs/formatDate';
 import RemoveModal from '../common/RemoveModal';
-
-interface RemoveProps {
-  deleted?: boolean;
-}
+import MarkdownRenderContainer from '../../containers/common/MarkdownRenderContainer';
+import ReplyCardContainer from '../../containers/reply/ReplyCardConatiner';
 
 interface ListRepliesProps {
   replies: ReplyType[] | null;
@@ -17,6 +15,7 @@ interface ListRepliesProps {
   replyToggle: boolean;
   onReplyToggle: () => void;
   onRemoveReply: (id: string) => void;
+  refetch: any;
 }
 
 function ListReplies({
@@ -25,6 +24,7 @@ function ListReplies({
   replyToggle,
   onReplyToggle,
   onRemoveReply,
+  refetch,
 }: ListRepliesProps) {
   const [modal, setModal] = useState(false);
 
@@ -56,38 +56,16 @@ function ListReplies({
               </ToggleBox>
               <RepliesBox>
                 {replies.map((reply, i) => (
-                  <ReplyBox key={i}>
-                    <div className="content">
-                      <div className="header">
-                        {reply.profile ? <img src={reply.profile} alt="" /> : <BiBody />}
-
-                        <span>
-                          {reply.username}님{' '}
-                          <span className="date">
-                            {formatDate(reply.created_at)} 작성
-                          </span>
-                        </span>
-                        {user && user.id === reply.userId && (
-                          <span className="right">
-                            <RiDeleteBin5Fill
-                              color={'red'}
-                              size={22}
-                              onClick={onRemoveClick}
-                            />
-                          </span>
-                        )}
-                      </div>
-                      <TextPane deleted={reply.deleted ? true : false}>
-                        {reply.body}
-                      </TextPane>
-                    </div>
-
-                    <RemoveModal
-                      visible={modal}
-                      onCancel={onCancel}
-                      onConfirm={() => onRemove(reply.id)}
-                    />
-                  </ReplyBox>
+                  <ReplyCardContainer
+                    key={i}
+                    reply={reply}
+                    user={user}
+                    onRemoveClick={onRemoveClick}
+                    modal={modal}
+                    onCancel={onCancel}
+                    onRemove={onRemove}
+                    refetch={refetch}
+                  />
                 ))}
               </RepliesBox>
             </>
@@ -133,52 +111,4 @@ const ToggleBox = styled.div`
       color: ${oc.gray[4]};
     }
   }
-`;
-
-const ReplyBox = styled.div`
-  padding: 0.5rem;
-  padding-right: 0;
-  .content {
-    border-radius: 14px;
-    background: ${oc.gray[9]};
-    padding: 0.5rem;
-    padding-right: 0;
-  }
-  .header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
-    img {
-      width: 35px;
-      height: auto;
-      border-radius: 50%;
-      margin-right: 1rem;
-    }
-    span {
-      font-size: 1.1rem;
-      .date {
-        font-size: 0.95rem;
-        color: ${oc.gray[5]};
-      }
-    }
-    .right {
-      margin-right: 0.5rem;
-      margin-left: auto;
-      cursor: pointer;
-      opacity: 0.6;
-      &:hover {
-        opacity: 1;
-      }
-    }
-  }
-`;
-
-const TextPane = styled.div<RemoveProps>`
-  padding: 0.8rem;
-  padding-bottom: 0.2rem;
-  ${(props) =>
-    props.deleted &&
-    css`
-      color: ${oc.gray[6]};
-    `}
 `;
