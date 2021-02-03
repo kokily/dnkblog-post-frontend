@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import oc from 'open-color';
 import { BiAddToQueue, BiHide } from 'react-icons/bi';
+import Preview from '../common/Preview';
 
 interface AddReplyProps {
   body: string;
@@ -20,7 +21,8 @@ function AddReply({ body, onChange, onAddReply, toggle, onToggle }: AddReplyProp
             <span className="right" onClick={onToggle}>
               <BiHide size={22} color={'red'} /> 닫기
             </span>
-            <div>
+            <div className="editor">
+              {body !== '' && <Preview body={body} />}
               <textarea
                 className="main"
                 value={body}
@@ -52,6 +54,10 @@ const AddReplyBox = styled.div`
   width: 100%;
   margin-top: 0.5rem;
   padding: 1rem;
+
+  .editor {
+    position: relative;
+  }
 `;
 
 const AddPane = styled.div`
