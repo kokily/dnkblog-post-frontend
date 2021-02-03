@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import oc from 'open-color';
 import MarkdownContainer from '../../containers/common/MarkdownRenderContainer';
@@ -12,8 +12,16 @@ interface WritePreviewProps {
 }
 
 function WritePreview({ category, title, body, thumbnail, tags }: WritePreviewProps) {
+  const count = document.querySelectorAll('.CodeMirror-gutter-wrapper').length;
+
+  useEffect(() => {
+    document.querySelector('#pane').scrollTop = document.querySelector(
+      '#pane'
+    ).scrollHeight;
+  }, [count]);
+
   return (
-    <PreviewBox>
+    <PreviewBox id="pane">
       <h4>카테고리: {category}</h4>
 
       {tags && (
@@ -66,6 +74,7 @@ const PreviewBox = styled.div`
   }
   .content {
     line-height: 1.6;
+    word-break: break-all;
   }
   .tags {
     display: flex;

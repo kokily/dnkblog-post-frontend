@@ -19,6 +19,8 @@ export default MarkdownRender;
 
 // Styles
 const MarkdownBox = styled.div`
+  line-height: 1.8;
+
   blockquote {
     border-left: 4px solid ${oc.blue[6]};
     padding: 1rem;
@@ -35,6 +37,8 @@ const MarkdownBox = styled.div`
   h3,
   h4 {
     font-weight: 500;
+    margin-top: 4rem;
+    color: ${oc.blue[6]};
   }
   h1,
   h2,
@@ -77,5 +81,8 @@ const MarkdownBox = styled.div`
     margin: 0 auto;
     display: block;
     margin-bottom: 2.3rem;
+  }
+  p {
+    font-size: 1.3rem;
   }
 `;

@@ -79,6 +79,7 @@ const AddPane = styled.div`
     height: 4rem;
     border-radius: 7px;
     outline: none;
+    margin-top: 0.5rem;
     padding: 0.5rem;
     font-size: 1.2rem;
     resize: none;

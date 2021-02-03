@@ -158,6 +158,7 @@ const TextPane = styled.div<RemoveProps>`
     border-radius: 7px;
     outline: none;
     padding: 0.5rem;
+    margin-top: 0.5rem;
     margin-bottom: 0.3rem;
     font-size: 1.2rem;
     resize: none;
