@@ -19,6 +19,8 @@ export default MarkdownRender;
 
 // Styles
 const MarkdownBox = styled.div`
+  line-height: 1.6;
+
   blockquote {
     border-left: 4px solid ${oc.blue[6]};
     padding: 1rem;
@@ -34,7 +36,8 @@ const MarkdownBox = styled.div`
   h2,
   h3,
   h4 {
-    font-weight: 500;
+    font-weight: bold;
+    color: ${oc.blue[6]};
   }
   h1,
   h2,
@@ -48,6 +51,22 @@ const MarkdownBox = styled.div`
       color: ${oc.blue[6]};
       border: 1px solid ${oc.gray[2]};
       border-radius: 2px;
+    }
+  }
+  p {
+    em {
+      color: ${oc.blue[6]};
+      padding-left: 0.2rem;
+      padding-right: 0.2rem;
+    }
+    strong {
+      background: rgba(255, 255, 255, 0.25);
+      color: ${oc.teal[5]};
+      border-radius: 6px;
+      padding-left: 0.4rem;
+      padding-right: 0.4rem;
+      margin-left: 0.2rem;
+      margin-right: 0.2rem;
     }
   }
   a {
@@ -72,10 +91,14 @@ const MarkdownBox = styled.div`
     padding: 0.25rem;
     text-align: left;
   }
-  img {
-    max-width: 100%;
+  img,
+  iframe {
+    max-width: 80%;
     margin: 0 auto;
     display: block;
     margin-bottom: 2.3rem;
+  }
+  img {
+    border-radius: 4px;
   }
 `;

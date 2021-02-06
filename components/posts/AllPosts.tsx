@@ -52,13 +52,14 @@ function AllPosts({
             <PostBox key={post.id}>
               <img src={post.thumbnail ? post.thumbnail : '/thumbnail.png'} alt="" />
               <div>
-                <h1>
-                  <Link href={`/post/${post.id}`} passHref={true}>
+                <Link href={`/post/${post.id}`} passHref={true}>
+                  <h1>
                     {post.title.length > 20
                       ? `${post.title.slice(0, 20)}...`
                       : post.title}
-                  </Link>
-                </h1>
+                  </h1>
+                </Link>
+
                 <span>{formatDate(post.created_at)} 작성</span>
                 <p>
                   {post.tags && (
@@ -104,9 +105,11 @@ const PostBox = styled.div`
   img {
     margin-right: 15px;
     width: 15rem;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
   }
   h1 {
-    color: ${oc.cyan[5]};
+    color: ${oc.teal[7]};
     margin: 0;
     margin-top: 0.6rem;
     padding: 0;
@@ -114,7 +117,7 @@ const PostBox = styled.div`
     cursor: pointer;
     transition: 0.2s all;
     &:hover {
-      color: ${oc.cyan[4]};
+      color: ${oc.teal[2]};
     }
   }
   span {
@@ -175,3 +178,5 @@ const CloseButton = styled.button`
     transform: translateY(2px);
   }
 `;
+
+
