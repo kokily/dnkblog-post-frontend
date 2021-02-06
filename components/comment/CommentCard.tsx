@@ -9,6 +9,7 @@ import formatDate from '../../libs/formatDate';
 import MarkdownRenderContainer from '../../containers/common/MarkdownRenderContainer';
 import ReplyContainer from '../../containers/reply/ReplyContainer';
 import RemoveModal from '../common/RemoveModal';
+import Preview from '../common/Preview';
 
 interface RemoveProps {
   deleted?: boolean;
@@ -64,7 +65,10 @@ function CommentCard({
         </div>
         <TextPane deleted={comment.deleted ? true : false}>
           {toggle ? (
-            <textarea value={body} onChange={onChange} />
+            <>
+              <Preview body={body} />
+              <textarea value={body} onChange={onChange} />
+            </>
           ) : (
             <MarkdownRenderContainer markdown={comment.body} />
           )}
@@ -144,6 +148,7 @@ const CommentBox = styled.div<RemoveProps>`
 `;
 
 const TextPane = styled.div<RemoveProps>`
+  position: relative;
   padding: 0.8rem;
   padding-bottom: 0.2rem;
 
@@ -153,6 +158,7 @@ const TextPane = styled.div<RemoveProps>`
     border-radius: 7px;
     outline: none;
     padding: 0.5rem;
+    margin-top: 0.5rem;
     margin-bottom: 0.3rem;
     font-size: 1.2rem;
     resize: none;

@@ -40,7 +40,7 @@ function WriteBody({
     mode: 'markdown',
     theme: 'monokai',
     lineNumbers: true,
-    lineWrappers: true,
+    lineWrapping: true,
   };
 
   useLayoutEffect(() => {
@@ -110,10 +110,16 @@ const EditorBox = styled.div`
     background: ${oc.gray[9]};
     display: flex;
     flex-direction: column;
+
     .CodeMirror {
       font-size: 1.25rem;
       flex: 1;
       line-height: 1.5;
+
+      pre {
+        max-width: calc(100vw - 50%);
+        word-break: break-all;
+      }
     }
   }
 `;

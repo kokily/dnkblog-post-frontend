@@ -122,10 +122,11 @@ const ThumbnailBox = styled.div`
 
 const HrBar = styled.div`
   height: 1.8px;
-  margin-top: 1.2rem;
+  margin-top: 4.5rem;
   background: linear-gradient(to right, white, ${oc.cyan[4]});
 `;
 
 const PostContent = styled.div`
   font-size: 1.2rem;
+  margin-bottom: 4rem;
 `;

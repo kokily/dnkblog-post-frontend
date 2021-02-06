@@ -64,8 +64,8 @@ export default ReadPostButton;
 
 // Styles
 const ButtonBox = styled.div`
-  margin-top: 2.3rem;
-  margin-bottom: 2rem;
+  margin-top: 4rem;
+  margin-bottom: 4.5rem;
   margin-left: auto;
   margin-right: auto;
   text-align: center;

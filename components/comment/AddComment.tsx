@@ -4,6 +4,8 @@ import oc from 'open-color';
 import { MeType } from '../../libs/types';
 import { MdImageAspectRatio } from 'react-icons/md';
 import { CgArrowDownR } from 'react-icons/cg';
+import MarkdownRenderContainer from '../../containers/common/MarkdownRenderContainer';
+import Preview from '../common/Preview';
 
 interface AddCommentProps {
   body: string;
@@ -21,6 +23,7 @@ function AddComment({ body, onChange, onAddComment, user }: AddCommentProps) {
           <span>{user.username}</span>
         </MiniProfile>
       )}
+      {body !== '' && <Preview body={body} />}
       <textarea
         className="main"
         value={body}
@@ -38,6 +41,7 @@ export default AddComment;
 
 // Styles
 const CommentBox = styled.div`
+  position: relative;
   margin-bottom: 4rem;
   .main {
     width: 100%;
@@ -45,6 +49,7 @@ const CommentBox = styled.div`
     border-radius: 7px;
     outline: none;
     padding: 0.5rem;
+    margin-top: 0.5rem;
     margin-bottom: 0.3rem;
     font-size: 1.2rem;
     resize: none;
