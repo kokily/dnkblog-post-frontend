@@ -6,6 +6,7 @@ import { isProd, prodServer, devServer } from '../../libs/constants';
 import { PostType } from '../../libs/types';
 import { ADD_POST, UPDATE_POST } from '../../libs/graphql/posts';
 import WriteHeader from '../../components/write/WriteHeader';
+import { setHeaderId } from '../../libs/toc';
 
 export interface WriteHeaderProps {
   postId: string;
@@ -116,7 +117,7 @@ function WriteHeaderContainer({
           variables: {
             category,
             title,
-            body,
+            body: setHeaderId(body),
             tags,
             thumbnail,
           },
@@ -134,7 +135,7 @@ function WriteHeaderContainer({
             id: postId,
             category,
             title,
-            body,
+            body: setHeaderId(body),
             tags,
             thumbnail,
           },

@@ -6,7 +6,7 @@ import useScroll from './useScroll';
 
 function useAllPosts(title?: string) {
   const { data, loading, error, fetchMore } = useQuery<{
-    AllPosts: { posts: PostType[] | null };
+    AllPosts: { posts: PostType[] };
   }>(ALL_POSTS, {
     variables: { title },
   });
@@ -21,6 +21,7 @@ function useAllPosts(title?: string) {
         },
         updateQuery: (prev, { fetchMoreResult }) => {
           if (!fetchMoreResult) return prev;
+          if (!fetchMoreResult.AllPosts.posts) return prev;
           if (fetchMoreResult.AllPosts.posts.length === 0) {
             setIsFinished(true);
           }

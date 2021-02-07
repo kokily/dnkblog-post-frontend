@@ -20,7 +20,8 @@ function useTagPosts(id: string) {
           cursor,
         },
         updateQuery: (prev, { fetchMoreResult }) => {
-          if (!fetchMoreResult) return;
+          if (!fetchMoreResult) return prev;
+          if (!fetchMoreResult.TagPosts.posts) return prev;
           if (fetchMoreResult.TagPosts.posts.length === 0) {
             setIsFinished(true);
           }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import oc from 'open-color';
@@ -7,6 +7,8 @@ import shadow from '../../style/shadow';
 import { media } from '../../style/media';
 import formatDate from '../../libs/formatDate';
 import MarkdownRenderContainer from '../../containers/common/MarkdownRenderContainer';
+import PostTocContainer from '../../containers/post/PostTocContainer';
+import ProviderToc from './ProviderToc';
 
 interface ReadPostProps {
   post: PostType | null;
@@ -14,7 +16,7 @@ interface ReadPostProps {
 
 function ReadPost({ post }: ReadPostProps) {
   return (
-    <>
+    <ProviderToc>
       <PostBox>
         <Link href={`/category/${post.category}`} passHref={true}>
           <CategoryLink>카테고리 &gt; {post.category}</CategoryLink>
@@ -48,7 +50,8 @@ function ReadPost({ post }: ReadPostProps) {
           <MarkdownRenderContainer markdown={post.body} />
         </PostContent>
       </PostBox>
-    </>
+      <PostTocContainer body={post.body} />
+    </ProviderToc>
   );
 }
 
@@ -62,7 +65,7 @@ const PostBox = styled.div`
   width: 100%;
   max-width: 950px;
   border-bottom: 0.5rem outset ${oc.teal[4]};
-  margin-bottom: 2.5rem;
+  margin-bottom: 5rem;
 `;
 
 const CategoryLink = styled.a`

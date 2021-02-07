@@ -20,7 +20,8 @@ function useCategoryPosts(category: string) {
           cursor,
         },
         updateQuery: (prev, { fetchMoreResult }) => {
-          if (!fetchMoreResult) return;
+          if (!fetchMoreResult) return prev;
+          if (!fetchMoreResult.CategoryPosts.posts) return prev;
           if (fetchMoreResult.CategoryPosts.posts.length === 0) {
             setIsFinished(true);
           }

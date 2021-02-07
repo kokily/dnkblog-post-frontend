@@ -3,6 +3,8 @@ const mediaQuery = (maxWidth: number) => `
 `;
 
 export const media = {
+  xxlarge: mediaQuery(1920),
+  xlarge: mediaQuery(1600),
   large: mediaQuery(1200),
   medium: mediaQuery(992),
   small: mediaQuery(768),
