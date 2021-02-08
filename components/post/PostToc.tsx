@@ -57,7 +57,7 @@ function PostToc() {
     if (!headerTop) return;
 
     const header = [...headerTop].reverse().find((headingTops) => {
-      return scrollTop >= headingTops.top - 4;
+      return scrollTop >= headingTops.top - 16;
     });
 
     if (!header) {
@@ -79,6 +79,8 @@ function PostToc() {
   useEffect(() => {
     onScroll();
   }, [onScroll]);
+
+  if (!toc || !headerTop) return null;
 
   return (
     <PostTocBox>

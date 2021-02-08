@@ -23,6 +23,8 @@ export interface PostType {
   tags: string[] | null;
   created_at: string;
   updated_at?: string;
+  comments: CommentType[];
+  replies: ReplyType[];
 }
 
 export interface CategoryType {

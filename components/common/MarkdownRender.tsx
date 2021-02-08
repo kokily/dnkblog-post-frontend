@@ -20,6 +20,7 @@ export default MarkdownRender;
 // Styles
 const MarkdownBox = styled.div`
   line-height: 1.8;
+  margin-bottom: 14rem;
 
   blockquote {
     border-left: 4px solid ${oc.blue[6]};
@@ -31,6 +32,9 @@ const MarkdownBox = styled.div`
     p {
       margin: 0;
     }
+  }
+  h1 {
+    font-size: 2rem;
   }
   h1,
   h2,

@@ -15,6 +15,12 @@ export const ALL_POSTS = gql`
         tags
         created_at
         updated_at
+        comments {
+          id
+        }
+        replies {
+          id
+        }
       }
     }
   }
@@ -75,6 +81,14 @@ export const READ_POST = gql`
         tags
         created_at
         updated_at
+      }
+      prev {
+        id
+        title
+      }
+      next {
+        id
+        title
       }
     }
   }

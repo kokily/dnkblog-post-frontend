@@ -60,7 +60,8 @@ export default ListComments;
 
 // Styles
 const CommentsBox = styled.div`
-  margin-bottom: 4rem;
+  margin-top: 5rem;
+  margin-bottom: 14rem;
   hr {
     margin-bottom: 1.5rem;
   }

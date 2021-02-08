@@ -1,9 +1,9 @@
-import { GetServerSideProps } from 'next';
 import React from 'react';
+import { GetServerSideProps } from 'next';
+import { ALL_POSTS } from '../libs/graphql/posts';
+import { initializeApollo } from '../libs/apollo/client';
 import PageContainer from '../containers/common/PageContainer';
 import AllPostsContainer from '../containers/posts/AllPostsContainer';
-import { initializeApollo } from '../libs/apollo/client';
-import { ALL_POSTS } from '../libs/graphql/posts';
 
 function IndexPage() {
   return (

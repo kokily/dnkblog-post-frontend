@@ -9,12 +9,15 @@ import formatDate from '../../libs/formatDate';
 import MarkdownRenderContainer from '../../containers/common/MarkdownRenderContainer';
 import PostTocContainer from '../../containers/post/PostTocContainer';
 import ProviderToc from './ProviderToc';
+import NearPost from './NearPost';
 
 interface ReadPostProps {
   post: PostType | null;
+  prev: PostType | null;
+  next: PostType | null;
 }
 
-function ReadPost({ post }: ReadPostProps) {
+function ReadPost({ post, prev, next }: ReadPostProps) {
   return (
     <ProviderToc>
       <PostBox>
@@ -49,7 +52,31 @@ function ReadPost({ post }: ReadPostProps) {
         <PostContent>
           <MarkdownRenderContainer markdown={post.body} />
         </PostContent>
+
+        <NearPostsBox>
+          {prev ? (
+            <NearPost
+              id={prev.id}
+              title={prev.title}
+              category={post.category}
+              direction={'left'}
+            />
+          ) : (
+            <NearPost id={null} title={null} category={post.category} direction={null} />
+          )}
+          {next ? (
+            <NearPost
+              id={next.id}
+              title={next.title}
+              category={post.category}
+              direction={'right'}
+            />
+          ) : (
+            <NearPost id={null} title={null} category={post.category} direction={null} />
+          )}
+        </NearPostsBox>
       </PostBox>
+
       <PostTocContainer body={post.body} />
     </ProviderToc>
   );
@@ -65,7 +92,7 @@ const PostBox = styled.div`
   width: 100%;
   max-width: 950px;
   border-bottom: 0.5rem outset ${oc.teal[4]};
-  margin-bottom: 5rem;
+  margin-bottom: 10rem;
 `;
 
 const CategoryLink = styled.a`
@@ -82,8 +109,11 @@ const PostTitle = styled.div`
   flex-direction: column;
   padding-bottom: 2.1rem;
   h1 {
+    font-size: 3rem;
+    color: ${oc.indigo[5]};
+
     ${media.medium} {
-      font-size: 1.5rem;
+      font-size: 2.5rem;
     }
   }
 `;
@@ -125,11 +155,18 @@ const ThumbnailBox = styled.div`
 
 const HrBar = styled.div`
   height: 1.8px;
-  margin-top: 4.5rem;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
   background: linear-gradient(to right, white, ${oc.cyan[4]});
 `;
 
 const PostContent = styled.div`
   font-size: 1.2rem;
-  margin-bottom: 4rem;
+  margin-bottom: 17rem;
+`;
+
+const NearPostsBox = styled.div`
+  margin-bottom: 6rem;
+  display: flex;
+  justify-content: space-between;
 `;

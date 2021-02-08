@@ -66,7 +66,7 @@ const Layout = styled.div`
 `;
 
 const Main = styled.main`
-  margin-bottom: 45rem;
+  margin-bottom: 4rem;
   margin-left: 2rem;
   margin-right: 4rem;
   ${media.medium} {

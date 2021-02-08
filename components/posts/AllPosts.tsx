@@ -54,11 +54,13 @@ function AllPosts({
               <div>
                 <Link href={`/post/${post.id}`} passHref={true}>
                   <h1>
-                    {post.title.length > 20
-                      ? `${post.title.slice(0, 20)}...`
+                    {post.title.length > 26
+                      ? `${post.title.slice(0, 26)}...`
                       : post.title}
                   </h1>
                 </Link>
+
+                <p className="comments">[{post.comments.length + post.replies.length}]</p>
 
                 <span>{formatDate(post.created_at)} 작성</span>
                 <p>
@@ -128,7 +130,7 @@ const PostBox = styled.div`
     color: ${oc.gray[4]};
   }
   p {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     transition: 0.14s all;
     b {
       font-size: 1.2rem;
@@ -139,6 +141,13 @@ const PostBox = styled.div`
         color: ${oc.blue[5]};
       }
     }
+  }
+
+  .comments {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+    margin-left: 0.4rem;
+    color: ${oc.cyan[4]};
   }
   ${media.medium} {
     flex-direction: column;
@@ -178,5 +187,3 @@ const CloseButton = styled.button`
     transform: translateY(2px);
   }
 `;
-
-
