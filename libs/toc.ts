@@ -30,7 +30,7 @@ export function setHeaderId(body: string) {
     })
   );
 
-  return div.innerHTML;
+  return div.innerHTML.replace(/&gt;+/g, '>');
 }
 
 export function parseHeader(body: string) {

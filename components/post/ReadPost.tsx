@@ -93,6 +93,10 @@ const PostBox = styled.div`
   max-width: 950px;
   border-bottom: 0.5rem outset ${oc.teal[4]};
   margin-bottom: 10rem;
+
+  ${media.medium} {
+    margin-bottom: 1.5rem;
+  }
 `;
 
 const CategoryLink = styled.a`
@@ -158,15 +162,29 @@ const HrBar = styled.div`
   margin-top: 5rem;
   margin-bottom: 5rem;
   background: linear-gradient(to right, white, ${oc.cyan[4]});
+
+  ${media.medium} {
+    margin-top: 0rem;
+    margin-bottom: 1rem;
+  }
 `;
 
 const PostContent = styled.div`
   font-size: 1.2rem;
   margin-bottom: 17rem;
+
+  ${media.medium} {
+    margin-bottom: 0;
+  }
 `;
 
 const NearPostsBox = styled.div`
   margin-bottom: 6rem;
   display: flex;
   justify-content: space-between;
+
+  ${media.medium} {
+    margin-bottom: 1rem;
+    display: block;
+  }
 `;

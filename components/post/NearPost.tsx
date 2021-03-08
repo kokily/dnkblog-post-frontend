@@ -3,6 +3,7 @@ import Link from 'next/link';
 import styled, { css } from 'styled-components';
 import oc from 'open-color';
 import { CgChevronDoubleLeftO, CgChevronDoubleRightO } from 'react-icons/cg';
+import { media } from '../../style/media';
 
 interface NearPostProps {
   id: string | null;
@@ -82,12 +83,21 @@ const NearPostBox = styled.div<{ active: boolean }>`
     css`
       pointer-events: none;
     `}
+
+    
+  ${media.medium} {
+    width: 100%;
+  }
 `;
 
 const ArrowBox = styled.div`
   display: inline-flex;
   flex: 0;
   align-items: center;
+
+  ${media.medium} {
+    
+  }
 `;
 
 const ContentBox = styled.div`

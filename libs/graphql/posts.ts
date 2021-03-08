@@ -97,7 +97,7 @@ export const READ_POST = gql`
 // Remove Post (Params: id)
 export const REMOVE_POST = gql`
   mutation RemovePost($id: ID!) {
-    RemovePost {
+    RemovePost(id: $id) {
       ok
       error
     }

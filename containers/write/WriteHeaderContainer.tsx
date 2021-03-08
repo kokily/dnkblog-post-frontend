@@ -111,6 +111,8 @@ function WriteHeaderContainer({
       return;
     }
 
+    let overlapTags = tags === [] ? [] : [...new Set(tags.map((tag) => tag.trim()))];
+
     try {
       if (!edit) {
         const response = await AddPost({
@@ -118,7 +120,7 @@ function WriteHeaderContainer({
             category,
             title,
             body: setHeaderId(body),
-            tags,
+            tags: overlapTags,
             thumbnail,
           },
         });
@@ -136,7 +138,7 @@ function WriteHeaderContainer({
             category,
             title,
             body: setHeaderId(body),
-            tags,
+            tags: overlapTags,
             thumbnail,
           },
         });

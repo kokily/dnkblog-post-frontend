@@ -4,6 +4,7 @@ import oc from 'open-color';
 import { MeType } from '../../libs/types';
 import shadow from '../../style/shadow';
 import RemoveModal from '../common/RemoveModal';
+import { media } from '../../style/media';
 
 interface ButtonProps {
   back?: boolean;
@@ -69,6 +70,11 @@ const ButtonBox = styled.div`
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+
+  ${media.medium} {
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
 `;
 
 const Button = styled.button<ButtonProps>`
