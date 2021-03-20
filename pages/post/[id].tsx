@@ -1,16 +1,26 @@
 import React from 'react';
 import { GetServerSideProps } from 'next';
+import Head from 'next/head';
 import PageContainer from '../../containers/common/PageContainer';
 import { initializeApollo } from '../../libs/apollo/client';
 import { READ_POST } from '../../libs/graphql/posts';
 import { PostType } from '../../libs/types';
 import ReadPostContainer from '../../containers/post/ReadPostContainer';
 
-function ReadPost() {
+function ReadPost({ post }: { post: PostType }) {
   return (
-    <PageContainer>
-      <ReadPostContainer />
-    </PageContainer>
+    <>
+      <Head>
+        <title>{post.title}</title>
+        <meta name="description" content={post.title} />
+        {post.tags.map((tag) => (
+          <meta key={tag} name="description" content={tag} />
+        ))}
+      </Head>
+      <PageContainer>
+        <ReadPostContainer />
+      </PageContainer>
+    </>
   );
 }
 
