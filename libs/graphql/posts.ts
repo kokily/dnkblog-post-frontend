@@ -152,3 +152,18 @@ export const UPDATE_POST = gql`
     }
   }
 `;
+
+// Count Posts Params(cursor)
+export const COUNT_POSTS = gql`
+  query CountPosts($cursor: ID) {
+    CountPosts(cursor: $cursor) {
+      ok
+      error
+      posts {
+        id
+        title
+        counter
+      }
+    }
+  }
+`;

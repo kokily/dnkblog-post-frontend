@@ -41,6 +41,8 @@ function UserMenu({ user, onClose, onLogout, transition, categories }: UserMenuP
 
                     <Split />
 
+                    {user.admin && <UserMenuItem href="/counter">조회수</UserMenuItem>}
+
                     <UserMenuItem onClick={onLogout}>로그아웃</UserMenuItem>
                   </>
                 ) : (

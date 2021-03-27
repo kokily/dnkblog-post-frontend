@@ -21,6 +21,7 @@ export interface PostType {
   body: string;
   thumbnail: string | null;
   tags: string[] | null;
+  counter: number;
   created_at: string;
   updated_at?: string;
   comments: CommentType[];
