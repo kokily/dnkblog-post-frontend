@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import oc from 'open-color';
-import shadow from '../../style/shadow';
 
 interface SearchProps {
   mode: string;
@@ -37,6 +36,7 @@ const SearchBox = styled.div`
   height: 50px;
   margin-bottom: 1.6rem;
   box-sizing: content-box;
+  -webkit-box-sizing: content-box;
 `;
 
 const Content = styled.div`
