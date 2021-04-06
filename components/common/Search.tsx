@@ -59,6 +59,7 @@ const Input = styled.input`
   float: left;
   padding-left: 25px;
   transition: width 0.55s ease;
+  -webkit-appearance: none;
   &::placeholder {
     font-size: 1rem;
     color: ${oc.gray[5]};
